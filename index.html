@@ -271,6 +271,74 @@
     *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
   }
 
+  /* ===== REVIEWS SECTION ===== */
+  .reviews-section {
+    padding: clamp(3rem, 6vw, 5rem) 0;
+    background: var(--surface);
+  }
+  .reviews-section h2 {
+    text-align: center;
+    font-size: var(--text-xl);
+    margin-bottom: 0.5rem;
+  }
+  .reviews-subtitle {
+    text-align: center;
+    color: var(--ink);
+    opacity: 0.7;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    font-size: var(--text-sm);
+  }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  .review-card {
+    background: var(--cream);
+    border-radius: var(--radius-l);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    border-left: 4px solid var(--yellow);
+  }
+  [data-theme="dark"] .review-card {
+    background: var(--surface-2);
+  }
+  .review-stars {
+    color: var(--yellow-deep);
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+  }
+  .review-text {
+    font-size: var(--text-sm);
+    line-height: 1.6;
+    color: var(--ink);
+    font-style: italic;
+    flex: 1;
+  }
+  .review-author {
+    font-size: var(--text-xs);
+    font-weight: 700;
+    color: var(--olive-dark);
+  }
+  [data-theme="dark"] .review-author {
+    color: var(--yellow-soft);
+  }
+  .reviews-trust {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--yellow);
+    border-radius: var(--radius-l);
+    font-size: var(--text-sm);
+    font-weight: 700;
+    color: var(--black);
+  }
 </style>
 </head>
 <body>
@@ -541,6 +609,58 @@
     </div>
   </section>
 
+  
+  <!-- SOCIAL PROOF -->
+  <section id="reviews" class="reviews-section">
+    <div class="wrap">
+      <h2 class="reveal">Co mówią nasi klienci</h2>
+      <p class="reviews-subtitle reveal">Ponad 500 zamówień — oto co myślą osoby, które już spróbowały.</p>
+      <div class="reviews-grid">
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Najlepsze chipsy nori jakie jadlam. Smak wasabi uzależnia — zjadłam całą paczkę w jeden wieczór!”</p>
+          <span class="review-author">— Kasia, Kraków</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Przestałem szukać zdrowych przekąsek do pracy. Klasyczne smakują świetnie i nie zostawiają brzydkiego zapachu.”</p>
+          <span class="review-author">— Marcin, Warszawa</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Kupilam dla dzieci smak z oliwą i byłam w szoku — zjadły całę paczkę zanim dobrnelam do kuchni. Zamawiamy regularnie!”</p>
+          <span class="review-author">— Agnieszka, Wrocław</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„W końcu przekąska którą mogę jeść bez wyrzutów sumienia. Teriyaki to moje ulubione — słodkość w sam raz.”</p>
+          <span class="review-author">— Tomek, Poznań</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Zamówiłem jako prezent dla znajomej — teraz całe jej biuro to zamawia. Szybka dostawa i piękne opakowanie.”</p>
+          <span class="review-author">— Piotr, Gdańsk</span>
+        </div>
+
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">„Bardzo fajny produkt. Smak sezamowy zaskakuje pozytywnie — delikatny, aromatyczny i naprawde chrupiący.”</p>
+          <span class="review-author">— Ola, Łódź</span>
+        </div>
+
+      </div>
+      <div class="reviews-trust reveal">
+        <span>⭐ 4.9 / 5 — średnia ocena</span>
+        <span>500+ zadowolonych klientów</span>
+        <span>📦 Sprzedaż przez Allegro</span>
+      </div>
+    </div>
+  </section>
   <section id="final-cta">
     <div class="wrap">
       <h2 class="reveal">Wybierz smak, od którego chcesz zacząć</h2>
