@@ -117,16 +117,16 @@
 
   .hero{padding:52px 0 88px;min-height:calc(100svh - var(--header-height));display:flex;align-items:center;}
   .hero-inner{display:flex;flex-direction:column;align-items:center;text-align:center;max-width:780px;margin:0 auto;;gap:42px;align-items:center;width:100%;}
-  .hero-copy{max-width:720px;}
+  .hero-copy{max-width:720px;align-items:center;}
   .eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem;padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;margin-bottom:18px;background:rgba(255,250,240,.42);}
   .hero-badge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px;}
   .hero-badge span,.hero-point,.hero-stat{display:inline-flex;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,253,248,.66);font-size:.82rem;font-weight:800;letter-spacing:.03em;backdrop-filter:blur(10px);}
   [data-theme="dark"] .hero-badge span,[data-theme="dark"] .hero-point,[data-theme="dark"] .hero-stat{background:rgba(255,255,255,.04);}
   .hero h1{font-size:var(--text-2xl);max-width:none;margin-bottom:18px;}
-  .hero p.lede{font-size:var(--text-lg);line-height:1.55;max-width:31ch;margin:0 0 24px;opacity:.9;}
+  .hero p.lede{font-size:var(--text-lg);line-height:1.55;max-width:55ch;margin:0 0 24px;opacity:.9;}
   .hero-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:780px;margin:0 0 28px;}
   .hero-point{border-radius:18px;padding:14px 16px;font-size:.92rem;font-weight:700;line-height:1.45;justify-content:flex-start;min-height:100%;}
-  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;}
   .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:var(--text-sm);padding:16px 26px;border-radius:999px;text-decoration:none;cursor:pointer;border:1.5px solid var(--black);transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease,border-color .18s ease;}
   .btn-primary{background:var(--black);color:var(--yellow);box-shadow:var(--shadow-sm);}
   .btn-ghost{background:transparent;color:var(--fg);border-color:var(--line-strong);}
@@ -382,13 +382,7 @@
     <div class="hero-copy">
       <span class="eyebrow">Chipsy nori · prażone · chrupiące</span>
 
-      <div class="hero-badge">
-        <span>Nowość · Bestseller Wasabi</span>
-      </div>
-
-      <h1>Lżejszy sposób na przekąskę — wyrazisty smak, chrupkość i naturalny charakter.</h1>
-
-      <p class="lede">
+      
         Odkryj prażone chipsy nori od SolHomeThings: lekkie, chrupiące przekąski inspirowane azjatyckimi smakami,
         stworzone dla osób, które szukają czegoś prostego, wyjątkowego i naprawdę przyjemnego w codziennym podjadaniu.
       </p>
