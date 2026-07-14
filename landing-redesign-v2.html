@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SolHomeThings — Chrupiące przekąski z nori</title>
+<meta name="description" content="SolHomeThings — lekkie, prażone chipsy nori w 6 wyrazistych smakach. Chrupiąca przekąska do pracy, podróży i domu, dostępna online na Allegro.">
+<style>
+
+  :root{
+    --text-xs:clamp(.76rem,.72rem + .18vw,.88rem);
+    --text-sm:clamp(.92rem,.88rem + .18vw,1rem);
+    --text-base:clamp(1rem,.97rem + .24vw,1.12rem);
+    --text-lg:clamp(1.15rem,1.02rem + .7vw,1.45rem);
+    --text-xl:clamp(1.8rem,1.3rem + 2vw,2.8rem);
+    --text-2xl:clamp(2.6rem,1.8rem + 3vw,4.7rem);
+    --yellow:#f1c54b;
+    --yellow-soft:#f7e3a0;
+    --yellow-deep:#d39b09;
+    --black:#15120d;
+    --ink:#201b15;
+    --cream:#f7f1e3;
+    --cream-2:#fffaf0;
+    --sand:#efe2bf;
+    --olive:#5f5d35;
+    --olive-dark:#3b391f;
+    --charcoal:#1e1a14;
+    --surface:#fbf7ee;
+    --surface-2:#fffdf8;
+    --surface-3:#f3ecdc;
+    --line:rgba(21,18,13,.12);
+    --line-strong:rgba(21,18,13,.2);
+    --radius-s:10px;
+    --radius-m:18px;
+    --radius-l:28px;
+    --radius-xl:38px;
+    --shadow-sm:0 8px 20px rgba(21,18,13,.08);
+    --shadow:0 20px 50px rgba(21,18,13,.12);
+    --shadow-lg:0 28px 80px rgba(21,18,13,.18);
+    --font-display:"Instrument Serif","Times New Roman",serif;
+    --font-body:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+    --maxw:1220px;
+    --bg:linear-gradient(180deg,#f1c54b 0%, #efc847 22%, #f6efdf 22%, #f6efdf 100%);
+    --bg-solid:#f6efdf;
+    --fg:var(--black);
+    --header-height:78px;
+  }
+
+  [data-theme="dark"]{
+    --yellow:#f0c64d;
+    --yellow-soft:#5b4a18;
+    --yellow-deep:#f0c64d;
+    --black:#0f0d09;
+    --ink:#f4ecdb;
+    --cream:#e8dcc2;
+    --cream-2:#d7c8a8;
+    --sand:#302718;
+    --olive:#a59d5d;
+    --olive-dark:#cbc389;
+    --charcoal:#17130f;
+    --surface:#201a14;
+    --surface-2:#28211a;
+    --surface-3:#31271d;
+    --line:rgba(244,236,219,.12);
+    --line-strong:rgba(244,236,219,.22);
+    --shadow-sm:0 10px 24px rgba(0,0,0,.18);
+    --shadow:0 20px 60px rgba(0,0,0,.28);
+    --shadow-lg:0 28px 90px rgba(0,0,0,.36);
+    --bg:linear-gradient(180deg,#1a160f 0%, #201a14 15%, #16120e 100%);
+    --bg-solid:#16120e;
+    --fg:#f6efdf;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--font-body);
+    font-size:var(--text-base);
+    line-height:1.6;
+    transition:background .35s ease,color .35s ease;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+  h1,h2,h3{font-family:var(--font-display);font-weight:400;line-height:1.02;letter-spacing:-.03em;margin:0;text-wrap:balance;}
+  p{max-width:64ch;}
+  :focus-visible{outline:3px solid var(--black);outline-offset:3px;border-radius:8px;}
+  [data-theme="dark"] :focus-visible{outline-color:var(--yellow);}
+
+  .skip-link{position:absolute;left:-9999px;top:0;background:var(--black);color:var(--yellow);padding:12px 18px;z-index:200;border-radius:0 0 10px 0;}
+  .skip-link:focus{left:0;}
+
+  header{position:sticky;top:0;z-index:100;min-height:var(--header-height);background:color-mix(in srgb, var(--bg-solid) 78%, transparent);backdrop-filter:blur(18px);border-bottom:1px solid transparent;transition:border-color .3s ease,box-shadow .3s ease,background .35s ease;}
+  header.scrolled{border-bottom-color:var(--line);box-shadow:0 10px 30px rgba(21,18,13,.08);}
+  .nav-row{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;}
+  .logo{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 auto;text-decoration:none;color:var(--fg);font-family:var(--font-display);font-size:1.45rem;white-space:nowrap;}
+  .logo-img{width:38px;height:38px;flex:0 0 38px;object-fit:cover;border-radius:12px;box-shadow:var(--shadow-sm);}
+  .logo span{display:block;min-width:0;}
+  nav.primary-nav{display:flex;align-items:center;gap:18px;flex:0 0 auto;}
+  nav.primary-nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;}
+  nav.primary-nav a{text-decoration:none;font-weight:700;font-size:var(--text-sm);padding-bottom:4px;border-bottom:2px solid transparent;transition:border-color .2s ease,opacity .2s ease;opacity:.82;}
+  nav.primary-nav a:hover{border-color:currentColor;opacity:1;}
+  .theme-toggle{display:inline-flex;align-items:center;justify-content:center;background:var(--black);color:var(--yellow);border:none;border-radius:999px;padding:10px;cursor:pointer;transition:transform .2s ease, background .2s ease;box-shadow:var(--shadow-sm);}
+  [data-theme="dark"] .theme-toggle{background:var(--yellow);color:var(--black);}
+  .theme-toggle:hover{transform:translateY(-1px);}
+  .theme-toggle svg{width:18px;height:18px;display:block;}
+  .nav-toggle{display:none;background:none;border:2px solid var(--fg);border-radius:10px;width:44px;height:40px;cursor:pointer;align-items:center;justify-content:center;flex:0 0 auto;}
+  .nav-toggle span,.nav-toggle span::before,.nav-toggle span::after{content:"";display:block;width:20px;height:2px;background:var(--fg);position:relative;transition:transform .2s ease,opacity .2s ease;}
+  .nav-toggle span::before{position:absolute;top:-6px;}
+  .nav-toggle span::after{position:absolute;top:6px;}
+
+  .hero{padding:52px 0 88px;min-height:calc(100svh - var(--header-height));display:flex;align-items:center;}
+  .hero-inner{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(320px,.92fr);gap:42px;align-items:center;width:100%;}
+  .hero-copy{max-width:720px;}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem;padding:8px 14px;border:1px solid var(--line-strong);border-radius:999px;margin-bottom:18px;background:rgba(255,250,240,.42);}
+  .hero-badge{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 22px;}
+  .hero-badge span,.hero-point,.hero-stat{display:inline-flex;align-items:center;padding:9px 13px;border:1px solid var(--line);border-radius:999px;background:rgba(255,253,248,.66);font-size:.82rem;font-weight:800;letter-spacing:.03em;backdrop-filter:blur(10px);}
+  [data-theme="dark"] .hero-badge span,[data-theme="dark"] .hero-point,[data-theme="dark"] .hero-stat{background:rgba(255,255,255,.04);}
+  .hero h1{font-size:var(--text-2xl);max-width:11ch;margin-bottom:18px;}
+  .hero p.lede{font-size:var(--text-lg);line-height:1.55;max-width:31ch;margin:0 0 24px;opacity:.9;}
+  .hero-points{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:780px;margin:0 0 28px;}
+  .hero-point{border-radius:18px;padding:14px 16px;font-size:.92rem;font-weight:700;line-height:1.45;justify-content:flex-start;min-height:100%;}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:800;font-size:var(--text-sm);padding:16px 26px;border-radius:999px;text-decoration:none;cursor:pointer;border:1.5px solid var(--black);transition:transform .18s ease,box-shadow .18s ease,background .18s ease,color .18s ease,border-color .18s ease;}
+  .btn-primary{background:var(--black);color:var(--yellow);box-shadow:var(--shadow-sm);}
+  .btn-ghost{background:transparent;color:var(--fg);border-color:var(--line-strong);}
+  .btn-small{padding:12px 18px;font-size:.92rem;width:100%;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+  .btn-ghost:hover{background:var(--fg);color:var(--bg-solid);border-color:var(--fg);}
+  [data-theme="dark"] .btn-primary{background:var(--yellow);color:var(--black);border-color:var(--yellow);}
+  .hero-note{margin-top:14px;font-size:var(--text-sm);opacity:.72;}
+
+  .hero-visual{position:relative;display:grid;gap:18px;align-self:stretch;}
+  .hero-panel{position:relative;background:linear-gradient(180deg, rgba(255,253,248,.75), rgba(255,247,232,.96));border:1px solid var(--line);border-radius:32px;padding:24px;box-shadow:var(--shadow-lg);overflow:hidden;min-height:560px;display:flex;flex-direction:column;justify-content:space-between;isolation:isolate;}
+  .hero-panel::before{content:"";position:absolute;inset:auto -10% -28% auto;width:240px;height:240px;border-radius:50%;background:radial-gradient(circle, rgba(241,197,75,.55), rgba(241,197,75,0));z-index:-1;}
+  [data-theme="dark"] .hero-panel{background:linear-gradient(180deg, rgba(40,33,26,.96), rgba(23,19,15,.98));}
+  .hero-card-image{border-radius:26px;overflow:hidden;background:linear-gradient(135deg,#75692f,#f0c64d);padding:24px;min-height:330px;display:flex;align-items:center;justify-content:center;position:relative;}
+  .hero-card-image img{width:100%;max-width:320px;object-fit:contain;filter:drop-shadow(0 18px 36px rgba(0,0,0,.18));}
+  .hero-card-caption{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;}
+  .hero-card-caption h3{font-size:clamp(1.7rem,1.2rem + 1vw,2.4rem);margin-bottom:8px;}
+  .hero-card-caption p{margin:0;opacity:.8;font-size:var(--text-sm);max-width:28ch;}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;}
+  .hero-stat{border-radius:22px;padding:16px 18px;display:flex;flex-direction:column;align-items:flex-start;gap:6px;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.09em;}
+  .hero-stat strong{font-size:1.4rem;line-height:1;font-family:var(--font-display);font-weight:400;letter-spacing:-.02em;text-transform:none;}
+
+  section{padding:96px 0;}
+  .section-head{max-width:720px;margin-bottom:42px;}
+  .section-tag{display:block;margin-bottom:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;font-size:.76rem;opacity:.7;}
+  .section-head h2{font-size:var(--text-xl);max-width:11ch;}
+  .section-intro{font-size:1.04rem;max-width:58ch;opacity:.82;margin-top:14px;}
+  .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  .products{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .product-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px;}
+  .product-card{background:var(--surface-2);border:1px solid var(--line);border-radius:30px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;background-image:linear-gradient(180deg, rgba(255,255,255,.45), transparent 22%);box-shadow:var(--shadow-sm);}
+  .product-card:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--olive);}
+  .product-card.featured{grid-column:span 6;grid-row:span 2;display:grid;grid-template-rows:420px auto;align-content:start;}
+  .product-grid > .product-card:not(.featured){grid-column:span 3;}
+  .product-media{position:relative;aspect-ratio:4/3;display:flex;align-items:flex-end;justify-content:space-between;padding:18px;background:linear-gradient(135deg, rgba(95,93,53,.85), rgba(241,197,75,.8));overflow:hidden;}
+  .product-media::after{content:"";position:absolute;inset:auto -20% -18% auto;width:170px;height:170px;border-radius:50%;background:radial-gradient(circle, rgba(255,255,255,.35), rgba(255,255,255,0));}
+  [data-theme="dark"] .product-media{background:linear-gradient(135deg, rgba(62,58,31,.95), rgba(208,166,35,.45));}
+  .product-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+  .price-tag{position:relative;z-index:2;background:var(--cream-2);color:var(--black);font-weight:800;font-size:.82rem;padding:7px 12px;border-radius:999px;border:1px solid rgba(21,18,13,.15);box-shadow:var(--shadow-sm);}
+  .bestseller-flag{position:absolute;top:16px;left:16px;z-index:2;font-weight:800;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--olive);background:#fff7d4;padding:7px 12px;border-radius:999px;}
+  [data-theme="dark"] .bestseller-flag{color:#15120d;background:#e3d48d;}
+  .product-body{padding:22px;display:flex;flex-direction:column;gap:12px;flex:1;}
+  .product-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:2px;}
+  .product-pill{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;}
+  .product-body h3{font-size:1.24rem;line-height:1.08;}
+  .product-body p{margin:0;font-size:.96rem;opacity:.82;flex:1;max-width:34ch;}
+  .wasabi-card{background:#201a13;color:#fff7e8;}
+  .wasabi-card .product-media{height:420px;aspect-ratio:auto;padding:0;background:radial-gradient(circle at top right, rgba(241,197,75,.28), transparent 38%), linear-gradient(180deg,#2b241c 0%, #17120f 100%);display:block;}
+  .wasabi-card .price-tag{position:absolute;top:16px;left:16px;z-index:3;}
+  .wasabi-card .bestseller-flag{top:16px;left:110px;}
+  .wasabi-card .product-media img{object-fit:contain;padding:28px;}
+  .wasabi-card .product-body{padding:28px;gap:14px;}
+  .wasabi-card .product-body h3{color:#fffaf0;font-size:1.65rem;}
+  .wasabi-card .product-body p{color:#e4dac7;}
+  .wasabi-card .btn{background:var(--yellow);color:#15120d;border-color:var(--yellow);}
+  .wasabi-card .product-pill{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.12);}
+
+  .values-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;}
+  .value-main{background:linear-gradient(180deg,#19150f 0%, #262117 100%);color:var(--yellow);border-radius:34px;padding:44px;display:flex;flex-direction:column;justify-content:flex-end;min-height:320px;box-shadow:var(--shadow);position:relative;overflow:hidden;}
+  .value-main::after{content:"";position:absolute;right:-70px;top:-20px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle, rgba(241,197,75,.28), rgba(241,197,75,0));}
+  [data-theme="dark"] .value-main{background:linear-gradient(180deg,#282119 0%, #1b150f 100%);}
+  .value-main .num{font-family:var(--font-display);font-size:4rem;opacity:.35;margin-bottom:12px;line-height:1;}
+  .value-main h3{font-size:1.8rem;max-width:12ch;position:relative;z-index:1;}
+  .value-stack{display:flex;flex-direction:column;gap:18px;}
+  .value-small{background:var(--surface-2);border:1px solid var(--line);border-radius:28px;padding:26px;flex:1;box-shadow:var(--shadow-sm);}
+  .value-small h3{font-size:1.1rem;margin-bottom:10px;}
+  .value-small p{margin:0;font-size:.95rem;opacity:.82;}
+
+  .about{background:transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+  .about-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:center;}
+  .about-portrait{aspect-ratio:3/4;border-radius:32px;overflow:hidden;box-shadow:var(--shadow);}
+  .about-portrait img{width:100%;height:100%;object-fit:cover;}
+  .about-copy p{font-size:1.05rem;opacity:.87;max-width:58ch;}
+  .about-copy blockquote{margin:26px 0 0;padding-left:22px;border-left:3px solid var(--yellow-deep);font-family:var(--font-display);font-size:1.4rem;font-style:italic;line-height:1.2;}
+
+  .faq-list{max-width:820px;}
+  .faq-item{border-bottom:1.5px solid var(--line);}
+  .faq-item:first-child{border-top:1.5px solid var(--line);}
+  .faq-q{width:100%;text-align:left;background:none;border:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px 4px;font-family:var(--font-body);font-weight:800;font-size:1.03rem;color:var(--fg);}
+  .faq-q .plus{width:28px;height:28px;flex:0 0 auto;position:relative;border-radius:50%;border:1px solid var(--line);}
+  .faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--fg);border-radius:2px;}
+  .faq-q .plus::before{width:14px;height:2.5px;top:50%;left:50%;transform:translate(-50%,-50%);}
+  .faq-q .plus::after{width:2.5px;height:14px;top:50%;left:50%;transform:translate(-50%,-50%);transition:transform .25s ease;}
+  .faq-item[data-open="true"] .plus::after{transform:translate(-50%,-50%) rotate(90deg);}
+  .faq-a{overflow:hidden;max-height:0;transition:max-height .3s ease;}
+  .faq-a p{margin:0 4px 24px;opacity:.82;max-width:62ch;font-size:.97rem;}
+
+  .final-cta{background:linear-gradient(180deg,#16120e 0%, #221b14 100%);color:var(--cream);text-align:center;position:relative;overflow:hidden;}
+  .final-cta::before{content:"";position:absolute;inset:auto auto -140px -90px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle, rgba(241,197,75,.25), rgba(241,197,75,0));}
+  [data-theme="dark"] .final-cta{background:linear-gradient(180deg,#1d1712 0%, #120f0c 100%);}
+  .final-cta h2{color:var(--yellow);font-size:clamp(2.2rem,4vw,3.5rem);max-width:13ch;margin:0 auto 18px;}
+  .final-cta p{max-width:50ch;margin:0 auto 26px;opacity:.82;}
+  .cta-subcopy{margin-top:14px;font-size:.9rem;opacity:.74;}
+
+  footer{padding:40px 0;text-align:center;font-size:.85rem;opacity:.7;}
+  .mobile-nav{display:none;flex-direction:column;gap:4px;background:color-mix(in srgb, var(--bg-solid) 90%, transparent);border-bottom:1px solid var(--line);padding:8px 0 18px;backdrop-filter:blur(10px);}
+  .mobile-nav.open{display:flex;}
+  .mobile-nav a{text-decoration:none;color:var(--fg);font-weight:700;padding:12px 4px;border-bottom:1px solid var(--line);}
+
+  @media (max-width:1024px){
+    .hero-inner,.about-grid,.values-grid{grid-template-columns:1fr;}
+    .hero{padding:36px 0 72px;min-height:auto;}
+    .hero-panel{min-height:auto;}
+    .hero-points{grid-template-columns:1fr;}
+    .product-card.featured,.product-grid > .product-card:not(.featured){grid-column:span 6;}
+  }
+
+  @media (max-width:880px){
+    .nav-row{gap:10px;padding:14px 0;}
+    .logo{font-size:1rem;gap:8px;overflow:hidden;}
+    .logo-img{width:30px;height:30px;flex:0 0 30px;border-radius:8px;}
+    .logo span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    nav.primary-nav ul{display:none;}
+    .nav-toggle{display:flex;}
+    nav.primary-nav{gap:10px;}
+    .theme-toggle{padding:7px;flex:0 0 auto;}
+    .section-head h2{max-width:16ch;}
+  }
+
+  @media (max-width:680px){
+    section{padding:70px 0;}
+    .wrap{padding:0 16px;}
+    .hero h1{max-width:12ch;}
+    .hero-card-caption{grid-template-columns:1fr;}
+    .hero-stats{grid-template-columns:1fr;}
+    .cta-row{flex-direction:column;align-items:stretch;}
+    .cta-row .btn{width:100%;}
+    .product-grid{grid-template-columns:1fr;gap:18px;}
+    .product-card.featured,.product-grid > .product-card:not(.featured){grid-column:span 1;}
+    .product-card.featured{grid-template-rows:340px auto;}
+    .product-media{min-height:240px;}
+    .wasabi-card .product-media{height:340px;}
+    .product-body{padding:20px;}
+    .value-main,.value-small{padding:24px;}
+    .about-portrait{max-width:360px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important;scroll-behavior:auto !important;}
+  }
+
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Przejdź do treści</a>
+
+<header id="site-header">
+  <div class="wrap nav-row">
+    <a href="#top" class="logo" aria-label="SolHomeThings - strona główna">
+<img src="logo_400x400_yellow.jpg" alt="Logo SolHomeThings" class="logo-img">
+        <span>SolHomeThings</span>
+    </a>
+    <nav class="primary-nav" aria-label="Główna nawigacja">
+      <ul>
+        <li><a href="#products">Produkty</a></li>
+        <li><a href="#about">O nas</a></li>
+        <li><a href="#values">Dlaczego my</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+      <button class="theme-toggle" id="themeToggle" aria-pressed="false" aria-label="Przełącz tryb ciemny">
+        <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"></circle><path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"></path></svg>
+      </button>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Otwórz menu" aria-expanded="false" aria-controls="mobileNav">
+      <span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <div class="wrap" style="display:flex; flex-direction:column;">
+      <a href="#products">Produkty</a>
+      <a href="#about">O nas</a>
+      <a href="#values">Dlaczego my</a>
+      <a href="#faq">FAQ</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero" id="top">
+  <div class="wrap hero-inner">
+    <div class="hero-copy">
+      <span class="eyebrow">Chipsy nori · prażone · chrupiące</span>
+
+      <div class="hero-badge">
+        <span>Nowość · Bestseller Wasabi</span>
+      </div>
+
+      <h1>Lżejszy sposób na przekąskę — wyrazisty smak, chrupkość i naturalny charakter.</h1>
+
+      <p class="lede">
+        Odkryj prażone chipsy nori od SolHomeThings: lekkie, chrupiące przekąski inspirowane azjatyckimi smakami,
+        stworzone dla osób, które szukają czegoś prostego, wyjątkowego i naprawdę przyjemnego w codziennym podjadaniu.
+      </p>
+
+      <div class="cta-row">
+        <a href="#products" class="btn btn-primary">Przeglądaj produkty</a>
+        <a href="#about" class="btn btn-ghost">Poznaj markę</a>
+      </div>
+    </div>
+  </div>
+</section>
+  <section id="products">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Featured</span>
+        <h2>Sześć smaków, sześć różnych powodów, żeby wrócić po więcej</h2>
+        <p class="section-intro">Każdy wariant zachowuje tę samą lekkość i chrupkość, ale daje inny profil smaku — od bezpiecznego startu po bardziej odważne wybory.</p>
+      </div>
+
+<div class="product-grid">
+
+  <article class="product-card featured wasabi-card reveal">
+    <div class="product-media">
+      <img src="Frame 21.png" alt="Opakowanie chipsów nori o smaku wasabi marki SolHomeThings">
+      <span class="bestseller-flag">Bestseller</span>
+      <span class="price-tag">3,49 zł</span>
+    </div>
+    <div class="product-body">
+      <h3>CHIPSY NORI Wasabi 4,5 g</h3>
+      <p>Idealne połączenie pikantnej nuty, morskiego aromatu i lekkiej chrupkości, które zaskakuje i uzależnia!</p>
+      <a class="btn btn-primary btn-small" href="https://allegro.pl/oferta/chipsy-nori-prazone-morskie-glony-o-smaku-wasabi-4-5-g-chrupiace-przekaski-18311082940" target="_blank" rel="noopener noreferrer">Zobacz produkt</a>
+    </div>
+  </article>
+
+  <article class="product-card reveal">
+    <div class="product-media">
+      <img src="01.png" alt="Opakowanie chipsów nori kimchi marki SolHomeThings">
+      <span class="price-tag">3,49 zł</span>
+    </div>
+    <div class="product-body">
+      <h3>CHIPSY NORI Kimchi 4,5 g</h3>
+      <p>Nori Chipsy to aromatyczne listki alg pieczone z dodatkiem tradycyjnej przyprawy kimchi.</p>
+      <a class="btn btn-primary btn-small" href="https://allegro.pl/oferta/chipsy-nori-kimchi-z-alg-morskich-4-5-g-prazone-chrupiace-slonawe-akura-18580884843" target="_blank" rel="noopener noreferrer">Zobacz produkt</a>
+    </div>
+  </article>
+
+  <article class="product-card reveal">
+    <div class="product-media">
+      <img src="Frame 16.png" alt="Opakowanie klasycznych chipsów nori marki SolHomeThings">
+      <span class="price-tag">3,49 zł</span>
+    </div>
+    <div class="product-body">
+      <h3>CHIPSY NORI Klasyczne 4,5 g</h3>
+      <p>Klasyka w najlepszym wydaniu! Naturalne, prażone wodorosty nori o delikatnym, lekko słonym smaku.</p>
+      <a class="btn btn-primary btn-small" href="https://allegro.pl/oferta/chipsy-nori-prazone-morskie-wodorosty-glony-klasyczne-4-5g-chrupiace-18311030805" target="_blank" rel="noopener noreferrer">Zobacz produkt</a>
+    </div>
+  </article>
+
+  <article class="product-card reveal">
+    <div class="product-media">
+      <img src="Frame 7.jpg" alt="Opakowanie chipsów nori o smaku ukraińskiego barszczu marki SolHomeThings">
+      <span class="price-tag">3,49 zł</span>
+    </div>
+    <div class="product-body">
+      <h3>CHIPSY NORI Ukrainian Borscht 4,5 g</h3>
+      <p>Oryginalna przekąska inspirowana smakiem tradycyjnego barszczu ukraińskiego.</p>
+      <a class="btn btn-primary btn-small" href="https://allegro.pl/oferta/chipsy-nori-prazone-wodorosty-przekaski-o-smaku-ukrainian-borscht-4-5-g-18279093323" target="_blank" rel="noopener noreferrer">Zobacz produkt</a>
+    </div>
+  </article>
+
+  <article class="product-card reveal">
+    <div class="product-media">
+      <img src="Frame 6.jpg" alt="Opakowanie chipsów nori z oliwek dla dzieci marki SolHomeThings">
+      <span class="price-tag">3,49 zł</span>
+    </div>
+    <div class="product-body">
+      <h3>CHIPSY NORI z Oliwek dla dzieci 4 g</h3>
+      <p>Lekka i smaczna przekąska stworzona z myślą o najmłodszych.</p>
+      <a class="btn btn-primary btn-small" href="https://allegro.pl/oferta/chipsy-nori-morskie-glony-oliwa-z-oliwek-4-g-koreanskie-prazone-chrupiace-18278993575" target="_blank" rel="noopener noreferrer">Zobacz produkt</a>
+    </div>
+  </article>
+
+  <article class="product-card reveal">
+    <div class="product-media">
+      <img src="Frame 11.jpg" alt="Opakowanie chipsów nori o smaku słonego karmelu marki SolHomeThings">
+      <span class="price-tag">3,49 zł</span>
+    </div>
+    <div class="product-body">
+      <h3>CHIPSY NORI Salted Caramel 4 g</h3>
+      <p>Wyjątkowa, wyrafinowana przekąska dla osób, które cenią nietuzinkowe połączenia smaków.</p>
+      <a class="btn btn-primary btn-small" href="https://allegro.pl/oferta/chipsy-z-nori-prazone-morskie-wodorosty-glony-salted-caramel-4-g-chrupiace-18278962355" target="_blank" rel="noopener noreferrer">Zobacz produkt</a>
+    </div>
+  </article>
+
+</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="values">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">Dlaczego SolHomeThings</span>
+        <h2>To nie są kolejne zwykłe chipsy — i dokładnie o to chodzi</h2>
+        <p class="section-intro">Budujemy markę wokół prostego założenia: przekąska ma być wygodna, lekka i na tyle ciekawa w smaku, żeby naprawdę wyróżniała się w codziennym wyborze.</p>
+      </div>
+      <div class="values-grid reveal">
+        <div class="value-main">
+          <span class="num">01</span>
+          <h3>Chrupiąca tekstura, lekka forma i smak, który nie ginie po pierwszym kęsie.</h3>
+        </div>
+        <div class="value-stack">
+          <div class="value-small">
+            <h3>Autentyczna inspiracja</h3>
+            <p>Inspiracja azjatycką kulturą przekąsek przekuta w produkt, który łatwo włączyć do codziennego rytmu.</p>
+          </div>
+          <div class="value-small">
+            <h3>Na każdy dzień</h3>
+            <p>Mała porcja, szybki wybór i wygoda w każdej sytuacji — od biura po podróż.</p>
+          </div>
+          <div class="value-small">
+            <h3>Czysta forma</h3>
+            <p>Nowoczesna, czysta forma marki i smak, który od razu komunikuje swój charakter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="wrap about-grid">
+      <div class="about-portrait reveal" style="overflow:hidden; border-radius:24px; background:none !important;">
+        <img
+            src="SSSht.jpeg"
+            alt="Symbol marki SolHomeThings"
+            width="800"
+            height="1000"
+            style="width:100%; height:100%; object-fit:cover; display:block;" >
+    </div>
+      <div class="about-copy reveal">
+        <span class="section-tag">O marce</span>
+        <h2 style="margin-bottom:18px;">Codzienna przekąska, która nie smakuje jak oczywisty wybór</h2>
+        <p>W SolHomeThings łączymy inspirację azjatycką kulturą jedzenia z prostym podejściem do produktu. Chcemy, żeby jedna mała paczka dawała coś więcej niż chwilowe chrupanie — lekkość, charakter i smak, do którego chcesz wracać.</p>
+        <blockquote>Prostota w składzie. Charakter w smaku.</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="section-tag">FAQ</span>
+        <h2>Pytania, które słyszymy najczęściej</h2>
+      </div>
+      <div class="faq-list reveal">
+
+        <div class="faq-item" data-open="false">
+          <h3 style="margin:0;">
+            <button class="faq-q" aria-expanded="false">
+              Z czego zrobione są chipsy nori SolHomeThings?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a">
+            <p>Bazą jest prażone nori — naturalne wodorosty morskie — połączone z dopracowanymi przyprawami, dzięki którym każdy smak ma własny charakter.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-open="false">
+          <h3 style="margin:0;">
+            <button class="faq-q" aria-expanded="false">
+              Czy przekąski są chrupiące od razu po otwarciu?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a">
+            <p>Tak, dzięki prażeniu każda saszetka zachowuje lekką, suchą chrupkość od otwarcia do ostatniego kawałka.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-open="false">
+          <h3 style="margin:0;">
+            <button class="faq-q" aria-expanded="false">
+              Który smak polecacie na początek?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a">
+            <p>Wasabi to nasz bestseller i najlepszy wybór na początek, a Klasyczne polecamy osobom, które wolą spokojniejszy, bardziej uniwersalny smak.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-open="false">
+          <h3 style="margin:0;">
+            <button class="faq-q" aria-expanded="false">
+              Czy smak z oliwek nadaje się dla dzieci?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a">
+            <p>Tak, ta wersja powstała z myślą o najmłodszych — ma łagodniejszy, delikatniejszy profil smakowy.</p>
+          </div>
+        </div>
+
+        <div class="faq-item" data-open="false">
+          <h3 style="margin:0;">
+            <button class="faq-q" aria-expanded="false">
+              Gdzie mogę kupić produkty SolHomeThings?
+              <span class="plus" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div class="faq-a">
+            <p>Każdy smak kupisz online bezpośrednio z poziomu karty produktu — wystarczy kliknąć „Zobacz produkt”.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="final-cta">
+    <div class="wrap">
+      <h2 class="reveal">Wybierz smak, od którego chcesz zacząć</h2>
+      <p class="reveal">Najpierw bestseller Wasabi, bezpieczne Klasyczne albo coś bardziej nietypowego? Przejdź do produktów i sprawdź, który wariant pasuje do Ciebie najbardziej.</p>
+      <a href="#products" class="btn btn-primary reveal">Przejdź do smaków</a>
+      <p class="cta-subcopy reveal">Każda karta prowadzi bezpośrednio do zakupu online.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 SolHomeThings. Wszystkie prawa zastrzeżone.
+  </div>
+</footer>
+
+<script>
+  (function(){
+    // Theme toggle (no localStorage — respects system preference only as default)
+    var root = document.documentElement;
+    var btn = document.getElementById('themeToggle');
+    var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if(prefersDark){ root.setAttribute('data-theme','dark'); btn.setAttribute('aria-pressed','true'); }
+
+    btn.addEventListener('click', function(){
+      var isDark = root.getAttribute('data-theme') === 'dark';
+      if(isDark){ root.removeAttribute('data-theme'); btn.setAttribute('aria-pressed','false'); }
+      else { root.setAttribute('data-theme','dark'); btn.setAttribute('aria-pressed','true'); }
+    });
+
+    // Sticky header shadow
+    var header = document.getElementById('site-header');
+    window.addEventListener('scroll', function(){
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive:true });
+
+    // Mobile nav
+    var navToggle = document.getElementById('navToggle');
+    var mobileNav = document.getElementById('mobileNav');
+    navToggle.addEventListener('click', function(){
+      var open = mobileNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', open ? 'true':'false');
+    });
+    mobileNav.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){
+        mobileNav.classList.remove('open');
+        navToggle.setAttribute('aria-expanded','false');
+      });
+    });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-item').forEach(function(item){
+      var q = item.querySelector('.faq-q');
+      var a = item.querySelector('.faq-a');
+      q.addEventListener('click', function(){
+        var isOpen = item.getAttribute('data-open') === 'true';
+        // close others
+        document.querySelectorAll('.faq-item').forEach(function(other){
+          if(other !== item){
+            other.setAttribute('data-open','false');
+            other.querySelector('.faq-q').setAttribute('aria-expanded','false');
+            other.querySelector('.faq-a').style.maxHeight = null;
+          }
+        });
+        if(isOpen){
+          item.setAttribute('data-open','false');
+          q.setAttribute('aria-expanded','false');
+          a.style.maxHeight = null;
+        } else {
+          item.setAttribute('data-open','true');
+          q.setAttribute('aria-expanded','true');
+          a.style.maxHeight = a.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // Scroll reveal
+    var reveals = document.querySelectorAll('.reveal');
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if(entry.isIntersecting){
+            entry.target.classList.add('in-view');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold:0.12 });
+      reveals.forEach(function(el){ io.observe(el); });
+    } else {
+      reveals.forEach(function(el){ el.classList.add('in-view'); });
+    }
+  })();
+</script>
+
+</body>
+</html>
